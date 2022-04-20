@@ -12,11 +12,13 @@ input.addEventListener('input', debounce(InputValue, DEBOUNCE_DELAY))
 
 
 function InputValue() {
-   const query = input.value.trim()
+    const query = input.value.trim();
+    if (query) {
     fetchCountries(query).then(RenderList).catch(error => {
-        Notiflix.Notify.failure('Oops, there is no country with that name')
-        console.log(error)
+    Notiflix.Notify.failure('Oops, there is no country with that name')
+    console.log(error);
     })
+    }
     countryList.innerHTML = ''
     countryInfo.innerHTML= ''
 }
